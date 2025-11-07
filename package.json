@@ -1,1 +1,27 @@
-{"name":"tp_progra_iii","scripts":{"lint:fix":"eslint src/**/*.js --fix","test":"echo \"Error: no test specified\" && exit 1","lint":"eslint src/**/*.js","start":"node src/index.js"},"version":"1.0.0","license":"ISC","description":"","author":"","keywords":[],"type":"module","devDependencies":{"eslint":"^9.38.0","eslint_d":"^14.3.0"},"main":"index.js"}
+{
+  "name": "tp_progra_iii",
+  "scripts": {
+    "lint:fix": "eslint src/**/*.js --fix",
+    "dev": "nodemon src/api/index.js",
+    "lint": "eslint src/**/*.js",
+    "start": "node src/api/index.js"
+  },
+  "version": "1.0.0",
+  "license": "ISC",
+  "description": "",
+  "author": "",
+  "keywords": [],
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^9.38.0",
+    "eslint_d": "^14.3.0"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mysql2": "^3.15.3",
+    "nodemon": "^3.1.10"
+  }
+}
