@@ -24,6 +24,62 @@ app.get("/", (req, res) =>{
   res.send("Pagina principal");
 })
 
+/* ============= ENDPOINT CREAR PRODUCTOS =============== */
+
+app.post("/productos", async (req, res) => {
+    try {
+        let { nombre, categoria, precio, imagen } = req.body;
+
+        let sql = "INSERT INTO productos (nombre, categoria, precio, imagen) VALUES (?, ?, ?, ?)";
+
+        let [rows] = await connection.query(sql, [nombre, categoria, precio, imagen]);
+
+        res.status(201).json({
+            message: "Producto creado exitosamente"
+        });
+
+    } catch (e) {
+        console.error(e);
+
+        res.status(500).json({
+            message: "Error interno del servidor",
+            error: e.message
+        })
+    }
+})
+
+////////////////////////////////////////////////////////////////////
+
+/* ================== ENDPOINT MODIFICAR PRODUCTOS ================= */
+
+app.put("/productos/:id", async (req, res) => {
+    try {
+      console.log(req.params, req.body)
+
+        let { id } = req.params;
+
+        let { nombre, categoria, precio, imagen } = req.body;
+
+        let sql = `UPDATE productos SET nombre = ?, categoria = ?, precio = ?, imagen = ? WHERE id = ?`;
+
+        let [rows] = await connection.query(sql, [nombre, categoria, precio, imagen, id]);
+
+        res.status(201).json({
+            message: "Producto modificado exitosamente"
+        });
+
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({
+            message: "Error interno del servidor",
+            error: error.message
+        })
+    }
+})
+
+/* ================================================================= */
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
