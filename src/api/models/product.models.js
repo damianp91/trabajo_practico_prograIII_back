@@ -1,3 +1,5 @@
+// NOTE: Separacion de responsbilidades. Los modelos solo hablan con la base de datos
+
 import connection from "../database/db.js";
 
 // Trae todos los productos
@@ -34,9 +36,17 @@ const updateProduct = (nombre, categoria, precio, imagen, id) => {
   return connection.query(sql, [nombre, categoria, precio, imagen, id]);
 }
 
+// Buscar producto por id
+const selectProductById = (id) => {
+  let sql = `SELECT * FROM productos WHERE productos.id = ?`;
+
+  return connection.query(sql, [id]);
+}
+
 export default {
   selectAllProducts,
   deleteProduct,
   insertProduct,
-  updateProduct
+  updateProduct,
+  selectProductById
 }

@@ -1,3 +1,10 @@
+// NOTE: Codigos de estado HTTP:
+// 200 --> OK (exito)
+// 201 --> Created (recurso creado)
+// 400 --> Bad Request (datos invalidos de cliente)
+// 404 --> Not Found (Recurso no existente)
+// 500 --> Internal Server Error (error del servidor)
+
 import ProductModel from "../models/product.models.js";
 
 // Controlador para traer todos los productos
@@ -114,6 +121,34 @@ export const updateProduct = async (req, res) => {
 
     res.status(500).json({
       message: "Error interno del servidor. ", e
+    });
+  }
+}
+
+// Controladora para busscar producto por id
+export const getProductById = async (req, res) => {
+  try {
+    let { id } = req.params;
+    let [rows] = await ProductModel.selectProductById(id);
+
+    if (rows.length === 0) {
+      console.log(`Error! No se encontro el producto con id: ${id}`)
+
+      return res.status(404).json({
+        message: `No se encontro producto con id: ${id}`
+      });
+    }
+
+    res.status(200).json({
+      playload: rows,
+      message: "Producto encontrado"
+    });
+
+  } catch (e) {
+    console.error(`Error obteniendo producto con id: ${id}`, e.message);
+
+    res.status(500).json({
+      message: "Error al obtener producto con id"
     });
   }
 }
