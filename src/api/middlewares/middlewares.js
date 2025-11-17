@@ -1,3 +1,10 @@
+// NOTE: middlewares
+// funciones intermedias
+// req : Objeto con info de la peticion (body, params, headers)
+// res: Objeto que se usa para enviar las respuestas
+// next: Crucial pasa el control al siguiente middleware, sin esto la peticion queda
+//       congelada
+// Flujo: Cliente --> loggerUrl() --> next() --> validateId() --> next() --> controlador
 
 // logger
 const loggerUrl = (req, res, next) => {
@@ -5,7 +12,7 @@ const loggerUrl = (req, res, next) => {
   next();
 }
 
-// rutas
+// validacion id
 const validateId = (req, res, next) => {
   let {id} = req.params;
 
@@ -23,7 +30,25 @@ const validateId = (req, res, next) => {
   next();
 }
 
+// validacion de precio
+const validatePrice = (req, res, next) => {
+  const { precio } = req.params;
+
+  // Verificar que precio exista, sea un numero y que sea positivo
+  if (!precio || isNaN(Number(precio)) || isNaN(Number(precio)) < 0) {
+    return res.status(400).json({
+      message: "El precio es obligatorio y debe ser un numero mayor o igual a cero"
+    });
+  }
+
+  req.precio = parseFloat(precio, 10);
+
+  console.log("precio valido: ", req.precio);
+  next();
+}
+
 export {
   loggerUrl,
-  validateId
+  validateId,
+  validatePrice
 }
