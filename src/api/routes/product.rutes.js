@@ -3,16 +3,18 @@ import { Router } from "express";
 const router = Router();
 
 // Importacion de middlewares
-import { validateId, validatePrice } from "../middlewares/middlewares.js";
+import { validateId, validatePrice, validateCategory } from "../middlewares/middlewares.js";
 import {
   getAllProducts,
   removeProduct,
   createProduct,
   updateProduct,
-  getProductById
+  getProductById,
+  getProductByCategory
 } from "../controllers/product.controllers.js";
 
 router.get("/", getAllProducts);
+router.get("/category/:categoria", validateCategory, getProductByCategory);
 router.get("/:id", validateId, getProductById);
 router.post("/", validatePrice, createProduct);
 router.put("/", validatePrice, updateProduct);

@@ -14,7 +14,7 @@ export const getAllProducts = async (req, res) => {
     const [rows] = await ProductModel.selectAllProducts();
 
     res.status(200).json({
-      playload: rows,
+      payload: rows,
       message: rows.length === 0 ? "No se encontraron productos" : "Productos encontrados"
     });
   } catch (e) {
@@ -140,7 +140,7 @@ export const getProductById = async (req, res) => {
     }
 
     res.status(200).json({
-      playload: rows,
+      payload: rows,
       message: "Producto encontrado"
     });
 
@@ -150,5 +150,26 @@ export const getProductById = async (req, res) => {
     res.status(500).json({
       message: "Error al obtener producto con id"
     });
+  }
+}
+
+// Controladora para mostrar productos por categoria
+export const getProductByCategory = async (req, res) => {
+  try {
+    let { categoria } = req.params;
+    let [rows] = await ProductModel.selectProductByCategory(categoria);
+
+    res.status(200).json({
+      payload: rows,
+      message: rows.length === 0
+        ? `No se encontraron productos en la categoria ${categoria}`
+        : `Se encontraron ${rows.length} productos en la categoria ${categoria}`
+    });
+  } catch (e) {
+    console.error("Error obteniendo productos por categoria", e.message);
+
+    res.status(500).json({
+      message: "Error al obtener productos por categoria."
+    })
   }
 }

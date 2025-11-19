@@ -43,10 +43,18 @@ const selectProductById = (id) => {
   return connection.query(sql, [id]);
 }
 
+// Buscar producto por categoria
+const selectProductByCategory = (categoria) => {
+  let sql = `SELECT * FROM productos WHERE categoria = ?`;
+
+  return connection.query(sql, [categoria]);
+}
+
 export default {
   selectAllProducts,
   deleteProduct,
   insertProduct,
   updateProduct,
-  selectProductById
+  selectProductById,
+  selectProductByCategory
 }
