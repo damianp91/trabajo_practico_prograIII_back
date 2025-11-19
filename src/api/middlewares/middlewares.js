@@ -47,8 +47,29 @@ const validatePrice = (req, res, next) => {
   next();
 }
 
+// validar categoria
+const validateCategory = (req, res, next) => {
+  const { categoria } = req.params;
+
+  const categoriasValidas = ['crema', 'medicamento'];
+
+  const categoriaNormalizada = categoria.toLowerCase();
+
+  if (!categoriasValidas.includes(categoriaNormalizada)) {
+    return res.status(400).json({
+      message: `Categoria invalida. Categorias disponibles:
+        ${categoriasValidas.join(', ')}
+      `
+    });   
+  }
+
+  req.params.categoria = categoriaNormalizada;
+  next();
+}
+
 export {
   loggerUrl,
   validateId,
-  validatePrice
+  validatePrice,
+  validateCategory
 }
