@@ -57,9 +57,7 @@ const validateCategory = (req, res, next) => {
 
   if (!categoriasValidas.includes(categoriaNormalizada)) {
     return res.status(400).json({
-      message: `Categoria invalida. Categorias disponibles:
-        ${categoriasValidas.join(', ')}
-      `
+      message: `Categoria invalida. Categorias disponibles: ${categoriasValidas.join(', ')}`
     });   
   }
 
