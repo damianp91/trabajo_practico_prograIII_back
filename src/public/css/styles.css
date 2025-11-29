@@ -5,6 +5,18 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+li{
+  text-decoration: none;
+  list-style: none;
+  color: #000;
+}
+
+a{
+  text-decoration: none;
+  list-style: none;
+  color: #000;
+}
+
 /* ===================  LOGIN USUARIO  =================== */
 
 #main-bienvenida {
@@ -247,6 +259,7 @@ nav{
   border: 1px solid #e5e5e5;
   width: 75%;
   height: 700px;
+  background-color: #fff;
 }
 
 .flex-col-center-center {
@@ -263,7 +276,7 @@ nav{
 #productos {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: center;
   margin: 0 auto;
   width: 80%;
   background-color: #fff;
@@ -290,14 +303,15 @@ nav{
 #main-productos {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: start;
+  justify-content: start;
+  align-items: center;
   background-color: #0b3a66;
+  padding-bottom: 100px;
 }
 
 #main-productos h2{
   color: #fff;
-  margin-left: 170px;
+
 }
 
 #producto {
@@ -336,6 +350,7 @@ nav{
   margin: 0;
   font-weight: 600;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 #agregar-producto-button {
@@ -593,3 +608,171 @@ nav ul li:hover::after {
 }
 
 /* =============================================== */
+
+/* ======= INDEX.EJS ========= */
+
+#index-ejs-productos-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px !important;
+  flex-direction: row;
+  border: 1px solid #e5e5e5;
+  width: 70%;
+  height: 600px;
+  background-color: #fff;
+}
+
+.index-ejs-productos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+#index-ejs-main-productos {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: #0b3a66;
+  padding-bottom: 100px;
+}
+
+#index-ejs-main-productos h2{
+  color: #fff;
+
+}
+
+.index-ejs-producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  height: 300px;
+  border-radius: 14px;
+  padding: 15px !important;
+  gap: 14px;
+  background-color: #fff;
+  &:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  cursor: pointer;
+}
+
+.index-ejs-sub-contenedor-producto{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.index-ejs-producto img {
+  width: 200px;
+  height: 150px;
+  align-self: center;
+}
+
+.index-ejs-producto h5 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+#index-ejs-productos-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 30px;
+  overflow-y: scroll;
+}
+
+.index-ejs-producto p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0b3a66;
+}
+
+#index-ejs-detalles-contenedor-producto{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  background-color: #fff;
+  width: 20%;
+  height: 600px;
+  padding: 30px!important;
+}
+
+#index-ejs-main-productos div{
+  padding: 0px 20px;
+  gap: 30px;
+}
+
+#index-ejs-detalles-contenedor-producto img{
+  width: 250px;
+  height: 200px;
+}
+
+#index-ejs-detalles-sub-contenedor-producto{
+  text-align: center;
+}
+
+#index-ejs-detalles-sub-contenedor-producto h5{
+  margin: 0px;
+  font-size: 2rem;
+}
+
+#index-ejs-detalles-sub-contenedor-producto p{
+  margin: 0px;
+  font-size: 1.5rem;
+}
+
+#activo{
+  color: #00b941;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#inactivo{
+  color: red;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#desactivar-boton{
+  background-color: red;
+  color: #fff;
+  padding: 7px 12px !important;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.9;
+  }
+}
+
+#activar-boton{
+  background-color: #00a339;
+  color: #fff;
+  padding: 7px 12px !important;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.7;
+  }
+}

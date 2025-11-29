@@ -7,7 +7,15 @@ import { vistaProductos } from "../controllers/view.controllers.js";
 router.get("/", vistaProductos);
 
 router.get("/consultar", (req, res) => {
-    res.render("getAll");
+    res.render("getById");
+});
+
+router.get("/modificar", (req, res) => {
+    res.render("update");
+});
+
+router.get("/crear", (req, res) => {
+    res.render("create");
 });
 
 export default router;
