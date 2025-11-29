@@ -14,14 +14,16 @@ import {
   createProduct,
   updateProduct,
   getProductById,
-  getProductByCategory
+  getProductByCategory,
+  updateProductStatus
 } from "../controllers/product.controllers.js";
 
 router.get("/", getAllProducts);
 router.get("/:categoria/categoria", validateCategory, getProductByCategory);
-router.get("/:id/producto", validateId, getProductById);
-router.post("/:id/crear", validatePrice, createProduct);
-router.put("/:precio/actualizar", validatePrice, updateProduct);
+router.get("/:id", validateId, getProductById);
+router.post("/", createProduct);
+router.put("/:id", updateProduct);
 router.delete("/:id/eliminar", validateId, removeProduct);
+router.patch('/:id', validateId, updateProductStatus)
 
 export default router;

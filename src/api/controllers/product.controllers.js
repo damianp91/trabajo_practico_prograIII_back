@@ -34,7 +34,7 @@ export const removeProduct = async (req, res) => {
     let [result] = await ProductModel.deleteProduct(id);
     console.log(result);
 
-    if(result.affectedRows === 0) { // No se borro nada
+    if (result.affectedRows === 0) { // No se borro nada
       return res.status(400).json({
         message: "No se eliminó el producto"
       });
@@ -44,7 +44,7 @@ export const removeProduct = async (req, res) => {
       message: `Producto con id ${id} eliminado correctamente`
     });
 
-  } catch(e) {
+  } catch (e) {
     console.error("Error al eliminar un producto: ", e);
 
     res.status(500).json({
@@ -94,7 +94,10 @@ export const createProduct = async (req, res) => {
 // Controladora para actualizar producto
 export const updateProduct = async (req, res) => {
   try {
-    let {id, nombre, categoria, precio, imagen} = req.body;
+
+    let { id } = req.params;
+
+    let { nombre, categoria, precio, imagen } = req.body;
 
     if (!id || !nombre || !categoria || !precio || !imagen) {
       return res.status(400).json({
@@ -170,6 +173,27 @@ export const getProductByCategory = async (req, res) => {
 
     res.status(500).json({
       message: "Error al obtener productos por categoria."
+    })
+  }
+}
+
+export const updateProductStatus = async (req, res) => {
+  try {
+    let { id } = req.params;
+    let { activo } = req.body;
+
+    console.log(activo, "es booleano?")
+
+    let [rows] = await ProductModel.updateStatusProduct(activo, id);
+
+    res.status(200).json({
+      payload: rows,
+      message: "Estado del producto actualizado correctamente."
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al actualizar el estado."
     })
   }
 }

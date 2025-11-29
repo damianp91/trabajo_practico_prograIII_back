@@ -36,6 +36,14 @@ const updateProduct = (nombre, categoria, precio, imagen, id) => {
   return connection.query(sql, [nombre, categoria, precio, imagen, id]);
 }
 
+// Modificar estado booleano del producto
+
+const updateStatusProduct = (activo, id) =>{
+  let sql = `UPDATE productos SET activo = ? WHERE id = ?`;
+
+  return connection.query(sql, [activo, id]);
+}
+
 // Buscar producto por id
 const selectProductById = (id) => {
   let sql = `SELECT * FROM productos WHERE productos.id = ?`;
@@ -56,5 +64,6 @@ export default {
   insertProduct,
   updateProduct,
   selectProductById,
-  selectProductByCategory
+  selectProductByCategory,
+  updateStatusProduct
 }
