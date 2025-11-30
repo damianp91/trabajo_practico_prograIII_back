@@ -1,0 +1,19 @@
+<%- include("partials/head.ejs") %>
+<%- include("partials/nav.ejs") %>
+
+<body>
+  <main id="main-eliminar-producto">
+    <h1>Eliminar producto por id</h1>
+    <div class="contenedor-formulario">
+      <input id="input-id-producto" name="id" placeholder="id..." type="text">
+      <div onclick="buscarProductoPorId()" id="buscar-producto">
+        <span>Buscar</span>
+      </div>
+    </div>
+    <div id="contenedor-producto-encontrado" class="ubicacion-producto">
+    </div>
+  </main>
+</body>
+<script src="/js/delete.js"></script>
+
+<%- include("partials/footer.ejs") %>
