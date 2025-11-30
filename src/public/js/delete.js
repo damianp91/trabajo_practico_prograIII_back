@@ -63,7 +63,9 @@ function mostrarProductoParaEliminar(producto) {
       </div>
     </div>
     <div id="boton-eliminar-producto" class="posicio-boton-eliminar" onclick="confirmarEliminacion(${producto.id})">
-        <button>Confirmar Eliminación</button>
+        <button class="btn-eliminar">
+          Confirmar Eliminacion
+        </button>
     </div>
   `;
 }

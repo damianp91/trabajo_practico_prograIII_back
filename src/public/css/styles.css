@@ -607,9 +607,9 @@ nav ul li:hover::after {
   margin-bottom: 20px;
 }
 
-/* =========== ELIMINAR PRODUCTO ============== */
+/* =========== ELIMINAR y CONSULTAR PRODUCTO ============== */
 
-#main-eliminar-producto {
+#main-eliminar-producto, #main-consultar-producto {
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -618,7 +618,7 @@ nav ul li:hover::after {
     background-color: #0b3a66;/* Fondo azul de la vista Modificar */
 }
 
-#main-eliminar-producto h1 {
+#main-eliminar-producto, #main-consultar-producto h1 {
     margin-top: 70px;
     color: #ef7603; /* Color de acento de la vista Modificar */
 }
@@ -631,7 +631,7 @@ nav ul li:hover::after {
     align-items: center;
 }
 
-#input-id-producto { /* Estilo original del input */
+#input-id-producto {
     height: 30px;
     text-align: center;
     font-size: 1.7rem;
@@ -642,7 +642,7 @@ nav ul li:hover::after {
     border: none;
 }
 
-#buscar-producto { /* Estilo original del botón de búsqueda */
+#buscar-producto {
     border: none;
     border-radius: 6px;
     background-color: #00a339; /* Verde de búsqueda */
@@ -667,7 +667,7 @@ nav ul li:hover::after {
 }
 
 /* Estilo del botón de confirmación de ELIMINACIÓN */
-.btn-eliminar-confirmar {
+.btn-eliminar {
     background-color: #dc3545; /* Rojo para eliminación */
     cursor: pointer;
     color: #fff;
