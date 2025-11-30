@@ -4,19 +4,16 @@
 <main>
   <h1>Consultar producto por id</h1>
     <hr>
-        
       <form id="getProduct-form">
         <label for="id">Id del producto</label>
         <input type="number" name="id" id="id" required>
-        
         <input type="submit" value="Consultar producto">
       </form>
-        
       <div id="contenedor-productos">
         <ul id="lista-productos"></ul>
       </div>
+    </hr>
 </main>
-
-<script src="js/getById.js"></script>
+<script src="/js/getById.js"></script>
 
 <%- include("partials/footer.ejs") %>
