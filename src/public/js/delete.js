@@ -1,6 +1,6 @@
 const inputIdProducto = document.getElementById("input-id-producto");
 const contenedorProductoEncontrado = document.getElementById("contenedor-producto-encontrado");
-const BASE_URL = "http://localhost:4000/api/products";
+const BASE_URL = "http://localhost:3000/api/products";
 
 // Buscar Producto por ID (Llamada desde el onclick)
 async function buscarProductoPorId() {
