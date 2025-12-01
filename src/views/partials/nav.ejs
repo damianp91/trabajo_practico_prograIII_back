@@ -10,13 +10,20 @@
                 <h1>Farmacy</h1>
             </div>
             <ul class="flex-row-center-center">
-                <a href="/"><li>Ver productos</li></a>
-                <a href="/consultar"><li>Consultar</li></a>
-                <a href="/crear"><li>Crear</li></a>
-                <a href="/modificar"><li>Modificar</li></a>
-                <a href=""><li>Eliminar</li></a>
+                <li><a href="/">Ver productos</a></li>
+                <li><a href="/consultar">Consultar</a></li>
+                <li><a href="/crear">Crear</a></li>
+                <li><a href="/modificar">Modificar</a></li>
+                <li><a href="">Eliminar</a></li>
             </ul>
+
+            <form action="/logout" id="logout" method="POST">
+                <button type="submit" id="button-logout">
+                    Cerrar sesión <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </button>
+            </form>
+
         </div>
     </nav>
-    
+
 </header>

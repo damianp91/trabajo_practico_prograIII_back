@@ -1,0 +1,41 @@
+<%- include("partials/head.ejs") %>
+
+    <main id="main-login">
+
+
+        <div class="nav-dashboard logo-login" id="nav-logo">
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+            <h1>Farmacy</h1>
+        </div>
+
+        <form id="form-login" action="/login" method="POST" autocomplete="off">
+            <label for="emailUser">Email</label>
+            <input type="email" name="email" id="emailUser" required>
+
+            <label for="passwordUser">Contraseña</label>
+            <input type="password" name="password" id="passwordUser" required>
+
+            <div class="flex-row-center-center">
+                <input type="submit" value="Login" id="buttonLogin">
+                <input type="button" id="acceso-rapido" value="Acceso rapido">
+            </div>
+
+        </form>
+
+        <script>
+            let emailUser = document.getElementById("emailUser");
+            let passwordUser = document.getElementById("passwordUser");
+            let acceso_rapido = document.getElementById("acceso-rapido");
+
+            acceso_rapido.addEventListener("click", () => {
+                emailUser.value = "test@test.com";
+                passwordUser.value = "test"
+            });
+        </script>
+        <% if (typeof error !=="undefined" ) { %>
+            <div class="error-message">
+                <%= error %>
+            </div>
+            <% } %>
+                <%- include("partials/footer.ejs") %>
+    </main>
