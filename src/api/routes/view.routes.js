@@ -12,6 +12,7 @@ router.get("/consultar", requireLogin,(req, res) => {
         title: "Consultar producto",
         about: "Consultar producto por id"
     });
+})
 
 router.get("/modificar", requireLogin, (req, res) => {
     res.render("update", {
@@ -38,7 +39,9 @@ router.post("/login", loginAcceso);
 router.post("/logout", cerrarSesion);
   
 router.get("/eliminar", (req, res) => {
-    res.render("delete");
+    res.render("delete", {
+        title: "Borrar"
+    });
 });
 
 
