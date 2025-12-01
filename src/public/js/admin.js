@@ -2,7 +2,7 @@ const cardsProductos = document.getElementsByClassName("index-ejs-producto");
 const contenedorDetalles = document.getElementById("index-ejs-detalles-contenedor-producto");
 
 function cambiarBooleanoProducto(productId, booleano) {
-  fetch(`http://localhost:4000/api/products/${productId}`, {
+  fetch(`http://localhost:3000/api/products/${productId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'

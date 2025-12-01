@@ -1,6 +1,6 @@
 const inputIdProducto = document.getElementById("input-id-producto");
 const contenedorProductoEncontrado = document.getElementById("contenedor-producto-encontrado");
-const BASE_URL = "http://localhost:4000/api/products";
+const BASE_URL = "http://localhost:3000/api/products";
 
 // Buscar Producto por ID (Llamada desde el onclick)
 async function buscarProductoPorId() {
@@ -63,7 +63,9 @@ function mostrarProductoParaEliminar(producto) {
       </div>
     </div>
     <div id="boton-eliminar-producto" class="posicio-boton-eliminar" onclick="confirmarEliminacion(${producto.id})">
-        <button>Confirmar Eliminación</button>
+        <button class="btn-eliminar">
+          Confirmar Eliminacion
+        </button>
     </div>
   `;
 }

@@ -7,7 +7,7 @@ formularioCrearProducto.addEventListener("submit", async function (e) {
   let data = Object.fromEntries(formData.entries());
   console.log(data);
   try {
-    let response = await fetch("http://localhost:4000/api/products", {
+    let response = await fetch("http://localhost:3000/api/products", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

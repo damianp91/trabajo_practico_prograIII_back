@@ -1,19 +1,19 @@
 <%- include("partials/head.ejs") %>
 <%- include("partials/nav.ejs") %>
 
-<main>
-  <h1>Consultar producto por id</h1>
-    <hr>
-      <form id="getProduct-form">
-        <label for="id">Id del producto</label>
-        <input type="number" name="id" id="id" required>
-        <input type="submit" value="Consultar producto">
-      </form>
-      <div id="contenedor-productos">
-        <ul id="lista-productos"></ul>
+<body>
+  <main id="main-consultar-producto">
+    <h1>Consultar producto por id</h1>
+    <div class="contenedor-formulario">
+      <input id="input-id-producto" name="id" placeholder="id..." type="text">
+      <div onclick="buscarProductoPorId()" id="buscar-producto">
+        <span>Buscar</span>
       </div>
-    </hr>
-</main>
+    </div>
+    <div id="contenedor-producto-encontrado" class="ubicacion-producto">
+    </div>
+  </main>
+</body>
 <script src="/js/getById.js"></script>
 
 <%- include("partials/footer.ejs") %>
