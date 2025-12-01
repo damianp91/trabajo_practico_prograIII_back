@@ -666,7 +666,119 @@ nav ul li a{
   margin-bottom: 20px;
 }
 
-/* =============================================== */
+/* =========== ELIMINAR y CONSULTAR PRODUCTO ============== */
+
+#main-eliminar-producto, #main-consultar-producto {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 86vh;
+    background-color: #0b3a66;/* Fondo azul de la vista Modificar */
+}
+
+#main-eliminar-producto, #main-consultar-producto h1 {
+    margin-top: 70px;
+    color: #ef7603; /* Color de acento de la vista Modificar */
+}
+
+/* Estilo del input y botón de búsqueda (igual que en Modificar) */
+.contenedor-formulario {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#input-id-producto {
+    height: 30px;
+    text-align: center;
+    font-size: 1.7rem;
+    width: 80px;
+    padding: 20px;
+    margin-right: 40px;
+    border-radius: 8px;
+    border: none;
+}
+
+#buscar-producto {
+    border: none;
+    border-radius: 6px;
+    background-color: #00a339; /* Verde de búsqueda */
+    padding: 20px;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Contenedor del producto encontrado (Tarjeta Blanca) */
+#contenedor-producto-encontrado {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 30px;
+    width: 350px;
+    height: fit-content;
+    padding: 40px;
+}
+
+/* Estilo del botón de confirmación de ELIMINACIÓN */
+.btn-eliminar {
+    background-color: #dc3545; /* Rojo para eliminación */
+    cursor: pointer;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 40px;
+    width: 200px;
+    white-space: nowrap;
+    border: none;
+    margin-top: 20px;
+    font-weight: 600;
+
+    /* Estilo del hover similar a boton-mostrar-modificacion */
+    transition: all 0.5s;
+}
+
+.btn-eliminar-confirmar:hover {
+    opacity: 0.8;
+}
+
+/* Estilos de la imagen y texto dentro de la tarjeta */
+#contenedor-producto-encontrado img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.producto-nombre { /* H5 o P principal */
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.producto-id, .producto-precio {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Mensajes de Feedback */
+.mensaje {
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.error {
+    color: #dc3545;
+}
+
+.exito {
+    color: #00a339;
+}
 
 /* ======= INDEX.EJS ========= */
 
