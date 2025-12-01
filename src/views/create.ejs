@@ -1,33 +1,219 @@
 <%- include("partials/head.ejs") %>
-<%- include("partials/nav.ejs") %>
+    <%- include("partials/nav.ejs") %>
 
-<body>
-    <main class="flex-col-center-center" id="main-crear-productos">
-        <h1>Crear productos</h1>
-        <form class="flex-col-center-center formulario-productos" id="formulario-crear-productos">
-            <div class="flex-row-start-center">
-                <label for="nombre">Nombre</label>
-                <input name="nombre" id="nombre" type="text">
-            </div>
-            <div class="flex-row-start-center">
-                <label for="categoria">Categoria</label>
-                <select name="categoria" id="categoria">
-                    <option value="medicamento">Medicamento</option>
-                    <option value="crema">Crema</option>
-                </select>
-            </div>
-            <div class="flex-row-start-center">
-                <label for="precio">Precio</label>
-                <input name="precio" id="precio" type="number">
-            </div>
-            <div class="flex-row-start-center">
-                <label for="imagen">Imagen</label>
-                <input name="imagen" id="imagen" type="text">
-            </div>
-            <button type="submit">Enviar</button>
-        </form>
-        <div id="modal-container"></div>
-    </main>
-</body>
-<script defer src="/js/create.js"></script>
-<%- include("partials/footer.ejs") %>
+        <body>
+            <main id="main-crear-productos">
+                <div id="sub-container-crear-productos">
+                    <div class="flex-col-center-center">
+                        <h1>Crear productos</h1>
+                        <form class="flex-col-center-center formulario-productos" id="formulario-crear-productos">
+                            <div class="flex-row-start-center">
+                                <label for="nombre">Nombre</label>
+                                <input name="nombre" id="nombre" type="text">
+                            </div>
+                            <div class="flex-row-start-center">
+                                <label for="categoria">Categoria</label>
+                                <select name="categoria" id="categoria">
+                                    <option value="medicamento">Medicamento</option>
+                                    <option value="crema">Crema</option>
+                                </select>
+                            </div>
+                            <div class="flex-row-start-center">
+                                <label for="precio">Precio</label>
+                                <input name="precio" id="precio" type="number">
+                            </div>
+                            <div class="flex-row-start-center">
+                                <label for="imagen">Imagen</label>
+                                <input name="imagen" id="imagen" type="text">
+                            </div>
+
+                            <button type="submit">Enviar</button>
+
+                        </form>
+                        <div id="modal-container">
+                        </div>
+                    </div>
+
+                    <div class="flex-col-center-center">
+                        <h1>Crear usuarios</h1>
+                        <form id="altaUsers-container" action="">
+                            <label for="nombreUser">Nombre</label>
+                            <input type="text" name="name" id="nombreUser" required>
+
+                            <label for="emailUser">Email</label>
+                            <input type="email" name="email" id="emailUser" required>
+
+                            <label for="passwordUser">Password</label>
+                            <input type="password" name="password" id="passwordUser" required>
+
+                            <button type="submit">Crear usuario</button>
+
+                        </form>
+                    </div>
+                </div>
+
+
+            </main>
+
+        </body>
+        <script>
+            const formularioCrearProducto = document.getElementById("formulario-crear-productos");
+            const altaUser_container = document.getElementById("altaUsers-container");
+
+            // alta usuario
+            altaUser_container.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                let formData = new FormData(event.target);
+
+                let data = Object.fromEntries(formData.entries());
+
+                console.log(data);
+
+                // envio datos del usuario
+                try {
+                    let response = await fetch("http://localhost:3000/api/users", {
+                        method: "POST",
+                        body: JSON.stringify(data),
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    });
+                    if (response.ok) {
+                        e.target.elements["nombreUser"].value = "";
+                        e.target.elements["emailUser"].value = "";
+                        e.target.elements["passwordUser"].value = "";
+
+                        const modal = document.getElementById("modal-container");
+                        modal.style.display = 'block';
+
+                        modal.innerHTML = `
+                                    <div id='modal' class='flex-col-center-center'>
+                                        <i class="fa fa-window-close" id='cerrar-modal' aria-hidden="true"></i>
+                                        <h4>Usuario creado exitosamente!</h4>
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    </div>
+                                `;
+
+                        const botonCerrarModal = document.getElementById("cerrar-modal");
+
+                        botonCerrarModal.addEventListener("click", () => {
+                            modal.style.display = 'none';
+                        })
+
+                        window.addEventListener("click", (e) => {
+                            if (e.target === modal) {
+                                modal.style.display = 'none';
+                            }
+                        })
+
+                        let result = await response.json();
+                        console.log(result.message);
+                    }
+                } catch (error) {
+                    const modal = document.getElementById("modal-container");
+                    modal.style.display = 'block';
+
+                    modal.innerHTML = `
+                                    <div id='modal' class='flex-col-center-center'>
+                                        <i class="fa fa-window-close" id='cerrar-modal' aria-hidden="true"></i>
+                                        <h4>¡Ha surgido un error al crear el usuario!</h4>
+                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    </div>
+                                `;
+
+                    const botonCerrarModal = document.getElementById("cerrar-modal");
+
+                    botonCerrarModal.addEventListener("click", () => {
+                        modal.style.display = 'none';
+                    })
+
+                    window.addEventListener("click", (e) => {
+                        if (e.target === modal) {
+                            modal.style.display = 'none';
+                        }
+                    })
+
+                    console.error("Error al enviar los datos", error);
+                }
+
+
+
+            })
+
+            formularioCrearProducto.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                let formData = new FormData(e.target);
+                console.log(formData);
+                let data = Object.fromEntries(formData.entries());
+                console.log(data);
+                try {
+                    let response = await fetch("http://localhost:3000/api/products", {
+                        method: "POST",
+                        body: JSON.stringify(data),
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    });
+                    if (response.ok) {
+                        e.target.elements["nombre"].value = "";
+                        e.target.elements["categoria"].value = "";
+                        e.target.elements["precio"].value = "";
+                        e.target.elements["imagen"].value = "";
+
+                        const modal = document.getElementById("modal-container");
+                        modal.style.display = 'block';
+
+                        modal.innerHTML = `
+                                    <div id='modal' class='flex-col-center-center'>
+                                        <i class="fa fa-window-close" id='cerrar-modal' aria-hidden="true"></i>
+                                        <h4>¡Producto creado exitosamente!</h4>
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    </div>
+                                `;
+
+                        const botonCerrarModal = document.getElementById("cerrar-modal");
+
+                        botonCerrarModal.addEventListener("click", () => {
+                            modal.style.display = 'none';
+                        })
+
+                        window.addEventListener("click", (e) => {
+                            if (e.target === modal) {
+                                modal.style.display = 'none';
+                            }
+                        })
+
+                        let result = await response.json();
+                        console.log(result.message);
+                    } else {
+                        const modal = document.getElementById("modal-container");
+                        modal.style.display = 'block';
+
+                        modal.innerHTML = `
+                                    <div id='modal' class='flex-col-center-center'>
+                                        <i class="fa fa-window-close" id='cerrar-modal' aria-hidden="true"></i>
+                                        <h4>¡Ha surgido un error al crear el producto!</h4>
+                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    </div>
+                                `;
+
+                        const botonCerrarModal = document.getElementById("cerrar-modal");
+
+                        botonCerrarModal.addEventListener("click", () => {
+                            modal.style.display = 'none';
+                        })
+
+                        window.addEventListener("click", (e) => {
+                            if (e.target === modal) {
+                                modal.style.display = 'none';
+                            }
+                        })
+                    }
+                } catch (error) {
+
+                }
+            })
+
+        </script>
+        <%- include("partials/footer.ejs") %>
