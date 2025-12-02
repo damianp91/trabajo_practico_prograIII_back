@@ -10,11 +10,11 @@
 const loggerUrl = (req, res, next) => {
   console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url}`);
   next();
-}
+} 
 
 // validacion id
 const validateId = (req, res, next) => {
-  let { id } = req.params;
+  let {id} = req.params;
 
   // validacion de numero
   if (!id || isNaN(Number(id))) {
@@ -58,19 +58,10 @@ const validateCategory = (req, res, next) => {
   if (!categoriasValidas.includes(categoriaNormalizada)) {
     return res.status(400).json({
       message: `Categoria invalida. Categorias disponibles: ${categoriasValidas.join(', ')}`
-    });
+    });   
   }
 
   req.params.categoria = categoriaNormalizada;
-  next();
-}
-
-// middleware de ruta para proteger las vistas si se hizo login
-const requireLogin = (req, res, next) => {
-  if (!req.session.user) {
-    return res.redirect("login")
-  }
-
   next();
 }
 
@@ -78,6 +69,5 @@ export {
   loggerUrl,
   validateId,
   validatePrice,
-  validateCategory,
-  requireLogin
+  validateCategory
 }
