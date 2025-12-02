@@ -182,12 +182,17 @@ export const updateProductStatus = async (req, res) => {
     let { id } = req.params;
     let { activo } = req.body;
 
-    console.log(activo, "es booleano?")
-
     let [rows] = await ProductModel.updateStatusProduct(activo, id);
 
+    if (rows.affectedRows === 0) {
+      return res.status(404).json({ message: "Producto no encontrado o estado sin cambios." });
+    }
+
+    let [products] = await ProductModel.selectProductById(id);
+    const productoActualizado = products[0];
+
     res.status(200).json({
-      payload: rows,
+      payload: productoActualizado,
       message: "Estado del producto actualizado correctamente."
     });
 
