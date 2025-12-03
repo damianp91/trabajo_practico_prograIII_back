@@ -3,6 +3,23 @@ const router = Router();
 import { vistaProductos, loginAcceso, cerrarSesion } from "../controllers/view.controllers.js";
 //agrego este middleware para que si el usuario no esta logeado no pueda acceder a la vista
 import { requireLogin } from "../middlewares/middlewares.js";
+// import { vistaProductos, requireLogin } from "../controllers/view.controllers.js";
+
+router.get("/consultar", (req, res) => {
+    res.render("getById");
+});
+
+router.get("/modificar", (req, res) => {
+    res.render("update");
+});
+
+router.get("/crear", (req, res) => {
+    res.render("create");
+});
+
+router.get("/eliminar", (req, res) => {
+    res.render("delete");
+});
 
 // Rutas de las vistas
 router.get("/", requireLogin, vistaProductos);
@@ -44,5 +61,8 @@ router.get("/eliminar", (req, res) => {
   });
 });
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 export default router;
