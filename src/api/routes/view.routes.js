@@ -1,7 +1,9 @@
 import { Router } from "express";
 const router = Router();
-import { vistaProductos } from "../controllers/view.controllers.js";
-// import { requireLogin } from "../middlewares/middlewares.js";
+import { vistaProductos, loginAcceso, cerrarSesion } from "../controllers/view.controllers.js";
+//agrego este middleware para que si el usuario no esta logeado no pueda acceder a la vista
+import { requireLogin } from "../middlewares/middlewares.js";
+// import { vistaProductos, requireLogin } from "../controllers/view.controllers.js";
 
 router.get("/consultar", (req, res) => {
     res.render("getById");
@@ -58,7 +60,5 @@ router.get("/eliminar", (req, res) => {
     title: "Borrar"
   });
 });
-
->>>>>>> main
 
 export default router;
