@@ -61,8 +61,4 @@ router.get("/eliminar", (req, res) => {
   });
 });
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 export default router;
