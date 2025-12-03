@@ -24,6 +24,6 @@ router.get("/:id", validateId, getProductById);
 router.post("/", createProduct);
 router.put("/:id", updateProduct);
 router.delete("/:id/eliminar", validateId, removeProduct);
-router.patch('/:id', validateId, updateProductStatus);
+router.patch('/:id', validateId, updateProductStatus)
 
 export default router;
