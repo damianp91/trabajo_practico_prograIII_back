@@ -621,6 +621,7 @@ nav ul li:hover::after {
 #main-eliminar-producto h1 {
     margin-top: 70px;
     color: #ef7603; /* Color de acento de la vista Modificar */
+
 }
 
 /* Estilo del input y botón de búsqueda (igual que en Modificar) */
@@ -654,7 +655,7 @@ nav ul li:hover::after {
 
 /* Contenedor del producto encontrado (Tarjeta Blanca) */
 #contenedor-producto-encontrado {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: start;
     align-items: center;
@@ -673,7 +674,7 @@ nav ul li:hover::after {
     color: #fff;
     border-radius: 8px;
     padding: 10px 40px;
-    width: 200px;
+    width: 275px;
     white-space: nowrap;
     border: none;
     margin-top: 20px;

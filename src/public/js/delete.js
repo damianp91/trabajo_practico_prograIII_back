@@ -5,6 +5,7 @@ const BASE_URL = "http://localhost:3000/api/products";
 // Buscar Producto por ID (Llamada desde el onclick)
 async function buscarProductoPorId() {
   const id = inputIdProducto.value.trim();
+  contenedorProductoEncontrado.style.display = 'flex';
 
   if (!id) {
     contenedorProductoEncontrado.innerHTML = `
@@ -48,25 +49,23 @@ async function buscarProductoPorId() {
 // Funcion mostrar el producto y boton de confirmacion (Helper)
 function mostrarProductoParaEliminar(producto) {
   contenedorProductoEncontrado.innerHTML = `
-    <div class="card-producto">
-      <div class="flex-row-center-around">
+      <div class='flex-row-center-around' id='producto-id-activo'>
         <span>ID: ${producto.id}</span>
         <span>Estado: ${producto.activo === 1 ? "Activo" : "Inactivo"}</span>
       </div>
       <img src="${producto.imagen}"/>
-      <div class="producto-detalles">
-        <div class="ubicacion-detalles"
+      <div class='flex-col-center-center'>
+        <div class='flex-row-center-around' id='producto-id-activo'>
           <span>${producto.nombre}</span>
           <span>${producto.categoria}</span>
         </div>
         <p>$${producto.precio}</p>
       </div>
-    </div>
-    <div id="boton-eliminar-producto" class="posicio-boton-eliminar" onclick="confirmarEliminacion(${producto.id})">
-        <button class="btn-eliminar">
-          Confirmar Eliminacion
-        </button>
-    </div>
+      <div id="boton-eliminar-producto" class="posicio-boton-eliminar" onclick="confirmarEliminacion(${producto.id})">
+          <button class="btn-eliminar">
+            Confirmar Eliminacion
+          </button>
+      </div>
   `;
 }
 
@@ -94,6 +93,11 @@ async function confirmarEliminacion(id) {
           ${result.message}
         </p>
       `;
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500)
+      
     } else {
       // error en la API
       contenedorProductoEncontrado.innerHTML = `

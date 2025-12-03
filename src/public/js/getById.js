@@ -42,22 +42,18 @@ function mostrarProducto(producto) {
   contenedorProductoEncontrado.style.display = 'flex'; 
 
   contenedorProductoEncontrado.innerHTML = `
-    <div class="card-producto">
-      <div class="flex-row-center-around">
+    <div class='flex-row-center-around' id='producto-id-activo'>
         <span>ID: ${producto.id}</span>
         <span>Estado: ${producto.activo === 1 ? "Activo" : "Inactivo"}</span>
       </div>
-
-      <img src="${producto.imagen}" alt="${producto.nombre}"/>
-
-      <div class="producto-detalles">
-        <div class="ubicacion-detalles">
+      <img src="${producto.imagen}"/>
+      <div class='flex-col-center-center'>
+        <div class='flex-row-center-around' id='producto-id-activo'>
           <span>${producto.nombre}</span>
           <span>${producto.categoria}</span>
         </div>
         <p>$${producto.precio}</p>
       </div>
-    </div>
   `;
 }
 
